@@ -8,7 +8,7 @@ from dia_2.models import Peopleinfo
 
 def view(request):
     return render(request, 'index.html')
-def get_user_input(request):
+def get_user_input_dia(request):
 # Load and preprocess the diabetes dataset
     data2 = pd.read_csv('PIMA workbook Maths.csv')
 # preprocess the dataset as needed
@@ -56,11 +56,14 @@ def get_user_input(request):
     my_user=Peopleinfo(name=name,preg=preg,glu=glu,bp=bp,insulin=insulin,height=height,weight=weight,dpf=dpf,age=age,gender=gender,bmi=bmi)
     my_user.save()
     if prediction == [0]:
-        # return HttpResponse("The predicted outcome : you don't have diabetes")
-        return render(request, 'diapredPositive.html')
+            is_diabetic = False
     else:
-        # return HttpResponse("The predicted outcome : you have diabetes") 
-        return render(request, 'diapredNegative.html')
+            is_diabetic = True
+
+    context = {
+            'is_diabetic': is_diabetic
+        }
+    return render(request, 'diapredPositive.html', context)
     
     
     

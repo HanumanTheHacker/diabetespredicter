@@ -25,6 +25,19 @@
         margin-top: 15%;
         border-radius: 15px;
     }
+    .containerneg
+  {
+      /* height: 10vh;
+      width: 25vw; */
+      background-color:  rgba(255, 0, 0, 0.666);
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* padding: 10px; */
+      margin-top: 15%;
+      border-radius: 15px;
+  }
 </style>
   <body class="bg-[url('{% static 'img/Earth.jpg' %}')] bg-cover flex flex-col items-center p-20">
     <div class="flex flex-col items-center">
@@ -36,11 +49,19 @@
       </h2>
     </div>
     <!-- Form for taking the data to test  -->  
+    {% if is_diabetic %}
+    <div class="containerneg w-[40vw] h-[30vh]">
+      <p class="content">
+          <h1 class="text-3xl">OOPS !You may be diabetic.Take care</h1>
+      </p>
+    </div>
+    {% else %}
     <div class="container w-[40vw] h-[30vh]">
               <p class="content">
                   <h1 class="text-3xl ">Good news ! You are safe.Take care</h1>
               </p>
       </div>
+      {% endif %}
           <a href="{% url 'view' %}"><button  type="submit" id="submit" class="bg-[#FAE4B5] text-black py-2 px-8 text-xl rounded font-bold flex justify-center items-center mt-8 border-[1px] border-black">Try again</button></a>
     </form> 
   </body>

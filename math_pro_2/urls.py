@@ -20,5 +20,5 @@ from dia_2 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.view,name='view'),
-     path('predict',views.get_user_input,name='predict'),
+     path('predictdiabetes',views.get_user_input_dia,name='predictdiabetes'),
 ]
